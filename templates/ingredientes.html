@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <title>Flask</title>
+</head>
+<body>
+
+    <div class="menu">
+        <a href="/" class="menua">Inicio</a>    
+        <a href="/productos" class="menua">Productos</a>    
+        <a href="/ingredientes"class="menua">Ingredientes</a>
+    </div>
+
+    <div class="principal">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Calorias</th>
+                    <th>Inventario</th>
+                    <th>Es Vegetariano</th>
+                    <th>Tipo Ingrediente</th>
+                    <th>Sabor</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for ingrediente in ingredientes %}
+                    <tr>
+                        <td>{{ingrediente.nombre}}</td>
+                        <td>{{ingrediente.precio}}</td>
+                        <td>{{ingrediente.calorias}}</td>
+                        <td>{{ingrediente.inventario}}</td>
+                        <td>{{ingrediente.es_vegetariano}}</td>
+                        <td>{{ingrediente.tipo_ingrediente}}</td>
+                        <td>{{ingrediente.sabores.nombre}}</td>
+                    </tr>    
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
