@@ -13,3 +13,26 @@ class Ingredientes(db.Model):
     sabores = db.relationship('Sabores', backref='ingredientes',lazy=True)
     
     
+    def es_sano(self) -> bool:
+        if self.calorias < 100 or self.es_vegetariano:
+            return True
+        return False
+        
+    
+    def abastecer(self):
+        if self.tipo_ingrediente == 'Base':
+            self.inventario += 5
+        elif self.tipo_ingrediente == 'Complemento':
+            self.inventario += 10
+        else:
+            raise ValueError("Tipo de ingrediente desconocido")
+
+        db.session.commit()
+        return f"Abastecimiento Completado"
+    
+    def renovar_inventario(self):
+        if self.tipo_ingrediente =='Complemento':
+            self.inventario = 0
+            
+        db.session.commit()
+        return f"Inventario Renovado"
