@@ -13,6 +13,3 @@ class Ingredientes(db.Model):
     sabores = db.relationship('Sabores', backref='ingredientes',lazy=True)
     
     
-    
-    
-    
