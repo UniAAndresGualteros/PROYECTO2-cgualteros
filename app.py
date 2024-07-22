@@ -4,10 +4,11 @@ from db import db
 import os
 
 from flask_restful import Api # type: ignore
-from controllers.ingredientes_controller import IngredientesController
-from controllers.productos_controller import ProductosController
+from controllers.consultas_controller import IngredientesController
+from controllers.consultas_controller import ProductosController
+from controllers.consultas_controller import VentasController
 from controllers.heladeria_controller import HeladeriaController
-from controllers.heladeria_controller import SubmitSelection
+from controllers.heladeria_controller import HeladosVender
 
 
 load_dotenv()
@@ -23,6 +24,11 @@ api = Api(app)
 
 
 api.add_resource(HeladeriaController, "/")
-api.add_resource(SubmitSelection, '/submit_selection')
+api.add_resource(HeladosVender, '/heladosvender')
 api.add_resource(IngredientesController, "/ingredientes")
 api.add_resource(ProductosController, "/productos")
+api.add_resource(VentasController, "/ventas")
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

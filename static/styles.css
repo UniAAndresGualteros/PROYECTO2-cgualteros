@@ -48,6 +48,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 30px 30px;
     padding: 90px 0 40px;
 }
@@ -65,6 +66,23 @@ body{
     justify-content: center;
 }
 
+.divPrincipalP{
+    color: #f1f7f7;
+    font-size: 22px;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+.principalMensajes{
+    color: #d5e8e8;
+    font-size: 30px;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+
 
 .PrincipalBton{
     padding: 8px;
@@ -81,4 +99,25 @@ body{
     background-color: #1dbac2;
     padding: 6.5px;
     font-size: 18px;
+}
+
+.principalTabla{
+    margin: 2%;
+    border-spacing: 0;
+}
+
+th{
+    color: #f1f7f7	;
+    background-color: #373b3e;
+}
+
+td, th{
+    border:  solid 1px #252A2E;
+    border-spacing: 0;
+    padding: 8px;
+    border-collapse: collapse;
+}
+
+li{
+    padding: 5px;
 }

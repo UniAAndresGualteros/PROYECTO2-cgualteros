@@ -10,13 +10,16 @@ def hora_bogota():
 class Ventas(db.Model):
     idVenta = db.Column(db.Integer, primary_key=True)
     fecha_venta = db.Column(db.DateTime, default=hora_bogota)
-    producto = db.Column(db.Integer, nullable=False)
-    ingrediente_1 = db.Column(db.Integer, nullable=False)
+    producto = db.Column(db.Integer, db.ForeignKey('productos.idProducto'), nullable=False)
+    ingrediente_1 = db.Column(db.Integer, db.ForeignKey('ingredientes.idIngrediente'), nullable=False)
     ingrediente_2 = db.Column(db.Integer, nullable=False)
     ingrediente_3 = db.Column(db.Integer, nullable=False)
     precio_base = db.Column(db.Float, nullable=False)
     precio_plastico = db.Column(db.Float, nullable=False)
     precio_total = db.Column(db.Float, nullable=False)
+    
+    productos = db.relationship('Productos', backref='ventas',lazy=True)
+    ingredientes = db.relationship('Ingredientes', backref='ventas',lazy=True)
     
     
     

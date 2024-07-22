@@ -12,37 +12,48 @@
         <a href="/" class="menua">Inicio</a>    
         <a href="/productos" class="menua">Productos</a>    
         <a href="/ingredientes"class="menua">Ingredientes</a>
+        <a href="/ventas"class="menua">Ventas</a>
     </div>
 
     <div class="principal">
 
-        <table>
-            <thead>
+        <table class="principalTabla">
                 <tr>
                     <th>Nombre</th>
+                    <th>Sabor</th>
                     <th>Precio</th>
                     <th>Calorias</th>
                     <th>Inventario</th>
                     <th>Es Vegetariano</th>
                     <th>Tipo Ingrediente</th>
-                    <th>Sabor</th>
+                    
                 </tr>
-            </thead>
-            <tbody>
                 
                 {% for ingrediente in ingredientes %}
                     <tr>
                         <td>{{ingrediente.nombre}}</td>
-                        <td>{{ingrediente.precio}}</td>
+                        <td>
+                            {% if ingrediente.sabores.nombre == "Sin Sabor" %}
+                            &nbsp   
+                        {% else %}
+                            {{ingrediente.sabores.nombre}}
+                        {% endif %}
+                        <td>${{'{:,}'.format(ingrediente.precio)}}</td>
                         <td>{{ingrediente.calorias}}</td>
                         <td>{{ingrediente.inventario}}</td>
-                        <td>{{ingrediente.es_vegetariano}}</td>
+                        <td>
+                            {% if ingrediente.es_vegetariano == True %}
+                            Es Vegetariano   
+                        {% else %}
+                            No Es Vegetariano
+                        {% endif %}
+                        </td>
                         <td>{{ingrediente.tipo_ingrediente}}</td>
-                        <td>{{ingrediente.sabores.nombre}}</td>
+                        
                     </tr>    
                 {% endfor %}
                 
-            </tbody>
+
         </table>
         
     </div>
